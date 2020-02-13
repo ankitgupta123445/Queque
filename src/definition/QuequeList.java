@@ -2,6 +2,8 @@ package definition;
 
 import adt.QuequeAdt;
 
+import java.util.NoSuchElementException;
+
 public class QuequeList<E> implements QuequeAdt<E> {
     int size = 0;
     private Node<E> head = null;
@@ -60,7 +62,7 @@ public class QuequeList<E> implements QuequeAdt<E> {
 
     private E removeFirst() {
         if (size == 0) {
-            return null;
+            throw new NoSuchElementException();
         }
         head = head.Next;
         head.previous = null;
@@ -84,7 +86,13 @@ public class QuequeList<E> implements QuequeAdt<E> {
 
     @Override
     public E poll() {
-        return null;
+        if (size == 0) {
+            return null;
+        }
+        head = head.Next;
+        head.previous = null;
+        size--;
+        return head.getData();
     }
 
     @Override

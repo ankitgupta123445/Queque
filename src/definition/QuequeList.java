@@ -97,7 +97,10 @@ public class QuequeList<E> implements QuequeAdt<E> {
 
     @Override
     public E element() {
-        return null;
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        return head.getData();
     }
 
     private class Node<E> {

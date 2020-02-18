@@ -13,3 +13,4 @@ public interface QuequeAdt<E> {
 
     E element();
 }
+

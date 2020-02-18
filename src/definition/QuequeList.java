@@ -24,6 +24,20 @@ public class QuequeList<E> implements QuequeAdt<E> {
         return response;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("[");
+        Node<E> temp = head;
+        for (int i = 0; i < size && temp != null; i++) {
+            E data = temp.getData();
+            sb.append(data);
+            sb.append((i < size - 1) ? "," : "");
+            temp = temp.getNext();
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     private boolean addFirst(E data) {
         Node<E> node = new Node<>(data, head, tail);
         head = node;
@@ -64,10 +78,11 @@ public class QuequeList<E> implements QuequeAdt<E> {
         if (size == 0) {
             throw new NoSuchElementException();
         }
+        E k = head.getData();
         head = head.Next;
         head.previous = null;
         size--;
-        return head.getData();
+        return k;
 
     }
 
@@ -89,10 +104,11 @@ public class QuequeList<E> implements QuequeAdt<E> {
         if (size == 0) {
             return null;
         }
+        E k = head.getData();
         head = head.Next;
         head.previous = null;
         size--;
-        return head.getData();
+        return k;
     }
 
     @Override

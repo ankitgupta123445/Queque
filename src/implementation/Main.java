@@ -46,8 +46,6 @@ public class Main {
 
 
             }
-            //System.out.println("do you want to continue (y/n)");
-            //choice=sc.nextLine();
         } while (true);
     }
 }
